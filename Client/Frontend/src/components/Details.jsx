@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import Post from "./post";
 import { Card, Container, makeStyles,CardActions, CardActionArea, CardMedia, CardContent, Typography,Button,Grid } from "@material-ui/core";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from 'axios';
 import Paginate from './pagination/Paginate';
 import Pagination from '@material-ui/lab/Pagination';
@@ -54,7 +54,7 @@ export default function Details() {
 
              }
     }
-
+console.log(details)
     return (
         
             <div>
@@ -72,6 +72,7 @@ export default function Details() {
                 <CardActions>
                     <Button size="small" color="Primary">{details.status}</Button>
                     <Button size="small" color="Primary">{details.release_date}</Button>
+                    <a href={`https://api.themoviedb.org/${details.id}/watch/providers/movie?api_key=c92ecd56753067461e71f400f32022cf&language=en-US`} target="_blank">Where To Watch</a>
                 </CardActions>
             </Card>
             

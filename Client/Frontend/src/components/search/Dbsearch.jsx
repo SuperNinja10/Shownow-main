@@ -1,10 +1,16 @@
 
 import { useState,useEffect } from "react";
 import axios from "axios";
-import { Card, Container, makeStyles,CardActions, CardActionArea, CardMedia, CardContent, Typography,Button,Grid } from "@material-ui/core";
+import { Card, Container, makeStyles,CardActions, CardActionArea, CardMedia, CardContent, Typography,Button,Grid, Box } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import LinearProgress from '@material-ui/core/LinearProgress';
+
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 
 const useStyles = makeStyles((theme) =>({
@@ -81,6 +87,8 @@ const Search = () => {
    const classes = useStyles();
    const [trend, setTrend] = useState([]);
    const [search,setSearch] =useState();
+   const [genres,setGenres] =useState([]);
+   
 
    const [loading,setLoading] =useState(false);
    const [currentPage, setCurrentPage] = useState(1);
@@ -118,13 +126,18 @@ const Search = () => {
           
           
          }
+const getGenres=async()=>{
+  const get=await axios.get("https://api.themoviedb.org/3/genre/movie/list?api_key=c92ecd56753067461e71f400f32022cf&language=en%27");
+  const result=get.data.genres;
+  setGenres(result)
+}
 
    useEffect(() => {
-          
+    getGenres()      
         getrequest();
         
    }, [search])
-
+console.log(genres)
    const indexOfLastPost = currentPage * postsPerPage;
    const indexOfFirstPost = indexOfLastPost - postsPerPage;
    const currentPosts = trend.slice(indexOfFirstPost, indexOfLastPost);
@@ -135,6 +148,15 @@ const Search = () => {
     
     window.scroll(0,0);
 }
+const handleChange = (event) => {
+  const {
+    target: { value },
+  } = event;
+  setSearch(
+    // On autofill we get a stringified value.
+    typeof value === 'string' ? value.split(',') : value,
+  );
+};
 
    return (
       <> 
@@ -156,7 +178,33 @@ const Search = () => {
             }
         }
         />
+        <Box sx={{paddingX:8,minWidth:200}}>
+      <FormControl fullWidth >
+        <InputLabel id="demo-multiple-name-label">Genres</InputLabel>
+        <Select
+        className={classes.Select}
+          labelId="demo-multiple-name-label"
+          id="demo-multiple-name"
+          
+          value={search}
+          onChange={handleChange}
+          input={<OutlinedInput label="Name" />}
+          
+        >
+          {genres.map((name) => (
+            <MenuItem
+              key={name.id}
+              value={name.name}
+              
+            >
+              {name.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </Box>
       </div>
+      
     <Grid container spacing={2} className={classes.setup}>
         {(loading)? <div className={classes.loading}>
       <LinearProgress />

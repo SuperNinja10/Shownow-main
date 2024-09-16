@@ -183,7 +183,7 @@ const Search = () => {
       <div className={classes.root}>
       <TextField
           id="outlined-full-width"
-          label="Search Your Friends"
+          label="Search an user"
           className={classes.textField}
           placeholder="Search"
           fullWidth
