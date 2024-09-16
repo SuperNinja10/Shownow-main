@@ -72,7 +72,12 @@ console.log(details)
                 <CardActions>
                     <Button size="small" color="Primary">{details.status}</Button>
                     <Button size="small" color="Primary">{details.release_date}</Button>
-                    <a href={`https://api.themoviedb.org/${details.id}/watch/providers/movie?api_key=c92ecd56753067461e71f400f32022cf&language=en-US`} target="_blank">Where To Watch</a>
+                    <a href={`https://api.themoviedb.org/3/movie/${params.id}/watch/providers?api_key=c92ecd56753067461e71f400f32022cf`} 
+target="_blank" rel="noopener noreferrer">Where To Watch</a>
+ <Typography variant="caption" display="block">
+    Streaming data provided by <a href="https://www.justwatch.com" target="_blank" rel="noopener noreferrer">JustWatch</a>
+  </Typography>
+
                 </CardActions>
             </Card>
             
