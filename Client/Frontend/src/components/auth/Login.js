@@ -73,6 +73,13 @@ const Login=()=>{
     
         setOpen(false);
       };
+      // Simulate user login
+const handleLogin = () => {
+    // Set a "loggedIn" flag in localStorage
+    localStorage.setItem('loggedIn', true);
+    // You can also store other user info if needed
+};
+
 
     const loginHandler = async(e)=>{
           

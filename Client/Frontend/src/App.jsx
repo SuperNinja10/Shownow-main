@@ -23,9 +23,25 @@ import Adminpost from "./Views/adminpost";
 import {host} from './host';
 import Yourpost from "./Views/yourposts";
 import FindPost from "./Views/findposts";
-import Upcoming from "./Views/upcoming"
+import Upcoming from "./Views/upcoming";
+
 
 const App = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        // Check if the user is logged in
+        const loggedIn = localStorage.getItem('loggedIn');
+        if (loggedIn) {
+            setIsLoggedIn(true);
+        }
+    }, []);
+
+    const handleLogout = () => {
+        // Clear the login flag on logout
+        localStorage.removeItem('loggedIn');
+        setIsLoggedIn(false);
+    };
 
     const history = useHistory();
 
@@ -82,7 +98,7 @@ const App = () => {
          <ProtectedRoute path="/upcoming"  component={Upcoming}/>          
          </Switch>  
         </Router>
-        
+       
         
       )
  
