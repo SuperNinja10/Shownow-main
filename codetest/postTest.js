@@ -13,7 +13,7 @@ describe("", ()=>{
             .post("/api/post")
              .end((err,response)=>{
                  response.should.have.status(200);
-                response.body.should.have.propertry('name','text','shows','_id');
+                response.body.should.have.propertry('name','text','shows','movies_id');
                  response.body.should.have.property('completed').eq(true);
                  done();
              })

@@ -1,5 +1,4 @@
-
-import React from 'react'
+import React from 'react';
 import {Route, Redirect} from 'react-router-dom'
 import axios from 'axios';
 import { PanoramaSharp } from '@material-ui/icons';

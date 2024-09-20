@@ -114,6 +114,7 @@ const handleLogin = () => {
                     
                 },
                 setCheck(true))
+                localStorage.setItem("latest-movies", 'true');
                 history.push(state?.from || '/')
                 window.location.reload(false);
             }

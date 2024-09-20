@@ -13,6 +13,7 @@ import {host} from '../host';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import MovieFilterIcon from '@material-ui/icons/MovieFilter';
 import AllInboxIcon from '@material-ui/icons/AllInbox';
+import LatestMovies from './LatestMovies';
 
 const useStyles = makeStyles((theme) =>({
         Toolbar:{
@@ -188,6 +189,7 @@ const Navbar = () => {
             </div>)
 
    )
+   
 
    return (
       <AppBar position="fixed">
@@ -199,6 +201,7 @@ const Navbar = () => {
               {profile}
 
           </Toolbar>
+          
       </AppBar>
    )
 };

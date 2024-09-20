@@ -184,7 +184,7 @@ const Post = () => {
    const [currentPage, setCurrentPage] = useState(1);
    const [postsPerPage,setPostsPerPage] = useState(9);
    const [Details, setDetails] = useState([])
-
+console.log(Details)
 
    const classes = useStyles();
    const [postData,setPostData] = useState([]);
@@ -195,6 +195,7 @@ const Post = () => {
    const [contentVisible, setContentState] = useState(false);
    const [selectComment,setSelectComment] = useState();
    const [name, setName] = useState();
+  
 
 
     const toggleCardContent = (result) => {
@@ -270,11 +271,12 @@ const Post = () => {
                     "x-auth-token": localStorage.getItem("authToken")
                 }
             }
-    
+    console.log(Details)
             const data = await axios.post(host+"/api/posts",
             {text: values,
               image: Details.image,
-              shows:Details.name
+              shows:Details.name,
+              movie_id:Details.id  
              },config);
             
             setChange(!change);
@@ -358,7 +360,7 @@ const Post = () => {
 
 
        const getdetails = async(id,type)=>{
-        
+        console.log(id,type)
              
           
              if(type == "movie"){
@@ -370,7 +372,8 @@ const Post = () => {
                 console.log(data.data)
                 setDetails({
                   name: data.data.original_title,
-                  image: data.data.backdrop_path
+                  image: data.data.backdrop_path,
+                  id: data.data.id
                 })
                             
 
@@ -381,7 +384,8 @@ const Post = () => {
                 handleClose();
                 setDetails({
                   name: data.data.original_name,
-                  image: data.data.backdrop_path
+                  image: data.data.backdrop_path,
+                  id: data.data.id
                 })
                            
                 console.log(data.data)
@@ -431,6 +435,11 @@ const Post = () => {
          
     
     window.scroll(0,0);
+}
+const handleRouteDetails= (result, type) =>{
+  console.log(result,type)   
+   history.push('/'+"details/"+result+'/'+type);
+   window.location.reload(false);
 }
 
   const card = (
@@ -602,6 +611,7 @@ const Post = () => {
                     <CardMedia className={classes.media}
                           image={"https://image.tmdb.org/t/p/original"+result.image}
                           title = {result.shows}
+                          onClick={()=> handleRouteDetails((result.movie_id),("movie"))}
                           />  
                      </CardActionArea>
 
