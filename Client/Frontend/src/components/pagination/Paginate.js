@@ -36,3 +36,4 @@ const Paginate = ({postsPerPage, totalPosts , sendPageNumber}) => {
     )
 }
 export default Paginate;
+

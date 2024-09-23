@@ -69,7 +69,7 @@ router.post('/',[auth,
     try {
 
       const user = await User.findById(req.user.id).select('-password');
-      console.log(req.body)
+      
       const post = new Post({
           text : req.body.text,
           image : req.body.image,

@@ -88,7 +88,7 @@ const MediaTv = () => {
                <PlayCircleOutlineIcon/>
             </div>
             <div>
-                <Typography gutterBottom variant="h5" >Top Ratted TV Shows</Typography>
+                <Typography gutterBottom variant="h5" >Top Rated TV Shows</Typography>
             </div>
         
         </div>

@@ -12,7 +12,7 @@ router.get('/me', auth, async(req, res) => {
         
       const profile = await Profile.findOne({user: req.user.id}).populate('user', ['name' ,'avatar']);
       if(!profile){
-          return res.status(400).json({msg: 'there is nor profile available right now'});
+          return res.status(400).json({msg: 'there is no profile available right now'});
 
       }
       
@@ -32,7 +32,7 @@ router.get('/all/:id', auth, async(req, res) => {
         
       const profile = await Profile.findOne({user: req.params.id}).populate('user', ['name' ,'avatar']);
       if(!profile){
-          return res.status(400).json({msg: 'there is nor profile available right now'});
+          return res.status(400).json({msg: 'there is no profile available right now'});
 
       }
       
@@ -168,7 +168,7 @@ router.put('/watchlist', [auth], async(req,res)=>{
       const {
          title,
          image,
-         ratting,
+         rating,
          tmdb
       } = req.body
 
@@ -176,7 +176,7 @@ router.put('/watchlist', [auth], async(req,res)=>{
       const exp = {
          title,
          image,
-         ratting,
+         rating,
          tmdb
       }
 
