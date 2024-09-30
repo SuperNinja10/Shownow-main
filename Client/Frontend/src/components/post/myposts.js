@@ -292,7 +292,9 @@ const Post = () => {
             const data = await axios.post(host+"/api/posts",
             {text: values,
               image: Details.image,
-              shows:Details.name
+              shows:Details.name,
+              movie_id:Details.id 
+              
              },config);
             
             setChange(!change);
@@ -396,7 +398,8 @@ const Post = () => {
                 console.log(data.data)
                 setDetails({
                   name: data.data.original_title,
-                  image: data.data.backdrop_path
+                  image: data.data.backdrop_path,
+                  id: data.data.id
                 })
                             
 
@@ -407,7 +410,8 @@ const Post = () => {
                 handleClose();
                 setDetails({
                   name: data.data.original_name,
-                  image: data.data.backdrop_path
+                  image: data.data.backdrop_path,
+                  id: data.data.id
                 })
                            
                 console.log(data.data)

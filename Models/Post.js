@@ -16,7 +16,7 @@ const postSchema = new Schema({
      },
      movie_id :{
         type: Number,
-        required:true
+        required: true
      },
       shows : { 
          type: String,
