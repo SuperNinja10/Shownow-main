@@ -168,7 +168,7 @@ router.put('/watchlist', [auth], async(req,res)=>{
       const {
          title,
          image,
-         rating,
+         ratting,
          tmdb
       } = req.body
 
@@ -176,7 +176,7 @@ router.put('/watchlist', [auth], async(req,res)=>{
       const exp = {
          title,
          image,
-         rating,
+         ratting,
          tmdb
       }
 

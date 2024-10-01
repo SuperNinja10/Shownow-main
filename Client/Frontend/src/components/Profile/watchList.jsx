@@ -287,7 +287,7 @@ const WatchList = () => {
             let data = await axios.put(host+"/api/profiles/watchlist"+[e],{                
                 "title":Details.name,
                 "image":Details.image,
-                "rating":value,
+                "ratting":value,
                 
                 "tmdb":Details.type,
 
